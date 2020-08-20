@@ -1,0 +1,6 @@
+# BFloat.jl
+
+## Index
+
+```@index
+```

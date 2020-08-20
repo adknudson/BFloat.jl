@@ -74,7 +74,6 @@ primitive type BFloat16 <: AbstractFloat 16 end
 const InfB16 = bitcast(BFloat16, 0x7f80)
 const NaNB16 = bitcast(BFloat16, 0x7fc0)
 
-## BFloat16 Properties
 uinttype(::Type{BFloat16}) = UInt16
 
 sign_mask(::Type{BFloat16}) =        0x8000
