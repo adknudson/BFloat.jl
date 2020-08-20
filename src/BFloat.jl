@@ -19,7 +19,8 @@ import Base: sign_mask,
              truncmask, truncbits,
              typemin, typemax, floatmin, floatmax, eps,
              bswap,
-             iszero
+             iszero,
+             reinterpret
 
 
 import Core.Intrinsics: bitcast, bswap_int
@@ -48,6 +49,7 @@ export
     Float64,
     Bool,
     Integer,
+    reinterpret,
     # Promotions
     promote_rule,
     widen,
