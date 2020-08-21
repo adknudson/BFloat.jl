@@ -20,7 +20,8 @@ import Base: sign_mask,
              typemin, typemax, floatmin, floatmax, eps,
              bswap,
              iszero,
-             reinterpret
+             reinterpret,
+             bitstring
 
 
 import Core.Intrinsics: bitcast, bswap_int
@@ -66,7 +67,10 @@ export
     truncmask, truncbits,
     typemin, typemax, floatmin, floatmax, eps,
     bswap,
-    iszero
+    iszero,
+    # Representation
+    bitstring
+    # Utils
 
 
 primitive type BFloat16 <: AbstractFloat 16 end
@@ -90,5 +94,7 @@ exponent_raw_max(::Type{BFloat16}) = Int(exponent_mask(BFloat16) >> significand_
 
 include("conversions.jl")
 include("functions.jl")
+include("representation.jl")
+# include("util.jl")
 
 end # module

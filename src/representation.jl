@@ -1,0 +1,1 @@
+bitstring(x::BFloat16) = bitstring(reinterpret(uinttype(BFloat16), x))
