@@ -1,7 +1,7 @@
 name = "BFloat"
 uuid = "7ddd8716-ff59-48f5-b5ce-deeac6d55891"
 authors = ["Alex Knudson"]
-version = "0.1.0"
+version = "0.1.1"
 
 [compat]
 julia = "1"

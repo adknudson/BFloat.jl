@@ -68,11 +68,11 @@ precision(::Type{BFloat16}) = significand_bits(BFloat16) + 1
 
 function nextfloat(f::BFloat16, d::Integer)
     F = typeof(f)
-    fumax = reinterpret(UInt, F(Inf))
+    fumax = reinterpret(UInt16, F(Inf))
     U = typeof(fumax)
 
     isnan(f) && return f
-    fi = reinterpret(Int, f)
+    fi = reinterpret(Int16, f)
     fneg = fi < 0
     fu = unsigned(fi & typemax(fi))
 

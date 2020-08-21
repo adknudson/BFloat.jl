@@ -1,5 +1,11 @@
+"""
+    BFloat16(x::Float32)
+
+Magic number is used to round the result rather than truncating it 
+https://stackoverflow.com/questions/55253233/convert-fp32-to-bfloat16-in-c
+"""
 function BFloat16(x::Float32)
-    f = reinterpret(UInt32, x)
+    f = reinterpret(UInt32, x * 1.001957f0) # Magic number
     h = (f >> 16) % UInt16
     reinterpret(BFloat16, h)
 end
@@ -10,6 +16,10 @@ BFloat16(x::Float64) = BFloat16(Float32(x))
 
 BFloat16(x::Integer) = BFloat16(Float32(x))
 BFloat16(x::UInt16) = reinterpret(BFloat16, x) # Specifically interpret UInt16 by its bit pattern
+
+BFloat16(x::Real) = BFloat16(Float32(x))
+BFloat16(x::Rational) = BFloat16(Float32(x))
+BFloat16(x::Number) = BFloat16(Float32(x))
 
 ## BFloat16 Promotion rules
 for t in (Int8, Int16, Int32, Int64, Int128, UInt8, UInt16, UInt32, UInt64, UInt128)
