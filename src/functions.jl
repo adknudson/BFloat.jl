@@ -31,8 +31,8 @@ for func in (:div,:fld,:cld,:rem,:mod)
 end
 
 function ==(x::BFloat16, y::BFloat16)
-    ix = reinterpret(uinttype(BFloat16), x)
-    iy = reinterpret(uinttype(BFloat16), y)
+    ix = reinterpret(uinttype(BFloat16), x.x)
+    iy = reinterpret(uinttype(BFloat16), y.x)
     if (ix|iy) & ~sign_mask(BFloat16) > NaNB16 # isnan(x) || isnan(y)
         return false
     end

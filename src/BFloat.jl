@@ -22,9 +22,6 @@ import Base: sign_mask,
              iszero,
              reinterpret, bitstring, show, print
 
-
-import Core.Intrinsics: bitcast, bswap_int
-
 export
     # Constructors
     BFloat16,
@@ -73,10 +70,12 @@ export
     get_scm
 
 
-primitive type BFloat16 <: AbstractFloat 16 end
+struct BFloat16 <: AbstractFloat
+    val::UInt16
+end
 
-const InfB16 = bitcast(BFloat16, 0x7f80)
-const NaNB16 = bitcast(BFloat16, 0x7fc0)
+const InfB16 = BFloat16(0x7f80)
+const NaNB16 = BFloat16(0x7fc0)
 
 uinttype(::Type{BFloat16}) = UInt16
 
